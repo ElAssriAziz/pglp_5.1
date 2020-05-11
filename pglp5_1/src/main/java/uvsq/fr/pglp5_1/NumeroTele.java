@@ -1,6 +1,12 @@
 package uvsq.fr.pglp5_1;
 
-public class NumeroTele{
+import java.io.Serializable;
+
+public class NumeroTele implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3882401496786760351L;
 	private String nom;
 	private String telephone;
 

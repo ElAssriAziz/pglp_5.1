@@ -1,10 +1,15 @@
 package uvsq.fr.pglp5_1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class GroupePersonnel implements ComponentPersonnel, Iterable<ComponentPersonnel>{
 	
+	/**
+	 * 
+	 */
+
 	private final ArrayList<ComponentPersonnel> ListePersonnels;
 	
 	public GroupePersonnel() {

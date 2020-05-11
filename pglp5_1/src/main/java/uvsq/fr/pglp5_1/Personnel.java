@@ -1,10 +1,17 @@
 package uvsq.fr.pglp5_1;
+import java.io.Serializable;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 
  
-public final class Personnel implements ComponentPersonnel{
+public final class Personnel implements Serializable,ComponentPersonnel{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5504351746862020764L;
 	private final String nom;
 	private final String prenom;
 	private final String fonction;

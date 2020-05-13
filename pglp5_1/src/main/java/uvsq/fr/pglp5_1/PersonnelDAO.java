@@ -25,7 +25,7 @@ public class PersonnelDAO implements DAO<Personnel>,Serializable{
 	public void create(Personnel p) {
 	
 		personnels.add(p);
-		System.out.print("Personnel Bien créé !\n");
+		System.out.print("\nPersonnel a été bien créé !\n");
 	}
 	public Personnel find(Personnel t) {
 		
@@ -42,7 +42,7 @@ public class PersonnelDAO implements DAO<Personnel>,Serializable{
 		    if(pers!=null && t.getNom().equals(pers.getNom())) {
 		    	 index = personnels.indexOf(pers);
 		        personnels.set(index, t);
-		    	System.out.print("Personnel Bien modifié !\n");
+		    	System.out.print("\nPersonnel a été bien modifié !\n");
 		        break;
 		    }
 		}
@@ -54,7 +54,7 @@ public class PersonnelDAO implements DAO<Personnel>,Serializable{
 	
 	public void delete(Personnel t) {
 		personnels.remove(t);
-		System.out.print("Personnel Bien supprimé !\n");
+		System.out.print("\nPersonnel a été bien supprimé !\n");
 		
 	}
 

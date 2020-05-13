@@ -21,5 +21,28 @@ public class App
     			.build(); 
     	
     	System.out.print(p1);
+    	 PersonnelDAO personneDao = new PersonnelDAO();
+    	 // create deux personnes
+    	 personneDao.create(p1);
+    	 personneDao.create(p2);
+        
+    	 System.out.println("----------Liste des personnes-----------\n");
+         for (Personnel per : personneDao.getAll()) {
+            System.out.println("Personne : [Nom : " + per.getNom()+ ", Prenom : " + per.getFonction() 
+            +", Date de naissance : "+per.getDateNaissance()+" ,Numeros : "+per.getNumeros()+" ]");
+         }
+
+
+         //update personne P1
+        personneDao.getAll().get(0).setNom("NomC");
+        personneDao.getAll().get(0).setFonction("Teacher");
+        personneDao.update(personneDao.getAll().get(0));
+        System.out.println("\n----------Liste des personnes aprèes modification----------\n");
+         //get personne
+        for (Personnel per : personneDao.getAll()) {
+            System.out.println("Personne : [Nom : " + per.getNom()+ ", Prenom : " + per.getFonction() 
+            +", Date de naissance : "+per.getDateNaissance()+" ,Numeros : "+per.getNumeros()+" ]");
+         }
+    	
 	}
 	}

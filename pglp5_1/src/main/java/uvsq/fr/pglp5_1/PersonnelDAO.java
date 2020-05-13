@@ -1,8 +1,6 @@
 package uvsq.fr.pglp5_1;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -10,9 +10,7 @@ public class GroupePersonnelDAO implements DAO<GroupePersonnel>,Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -627783275907040813L;
-	/**
-	 *
-	 */
+
 	private List<GroupePersonnel> groupes = new ArrayList<GroupePersonnel>();
 	 
 	public List<GroupePersonnel> getAll() {

@@ -21,7 +21,7 @@ public class App
     			.build(); 
     	
     	System.out.print(p1);
-    	 PersonnelDAO personneDao = new PersonnelDAO();
+    	 DAO<Personnel> personneDao = DAOFactory.getPersonnelDAO();
     	 // create deux personnes
     	 personneDao.create(p1);
     	 personneDao.create(p2);

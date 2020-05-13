@@ -48,5 +48,48 @@ public class TestSerialisation {
 			e.printStackTrace();
 		}
 	}
-	
+	@Test
+	public void testSerialisatioDAOPersonnel() {
+		try{
+			
+		    PersonnelDAO personnedao = new PersonnelDAO();
+		    PersonnelDAO personnedaoTest = new PersonnelDAO();
+		    Personnel p1 = new Personnel
+	    			.Builder("nomB","prenomB","Directeur")
+	    			.dateNaissance( LocalDate.of(1975, Month.MAY, 15))
+	    			.addNumTelephone(new NumeroTele("Personnel","06054852371"))
+	    			.build();
+	    	
+	    	Personnel p2 = new Personnel
+	    			.Builder("nomA","prenomA","Manager")
+	    			.dateNaissance( LocalDate.of(1989, Month.MAY, 10))
+	    			.addNumTelephone(new NumeroTele("Personnel","0605842691"))
+	    			.build();
+	    	 personnedao.create(p1);
+	    	 personnedao.create(p2);
+	    	 
+	    	
+			ObjectOutputStream out = new ObjectOutputStream(
+					
+							new FileOutputStream("personneDAO.serial"));
+			out.writeObject(personnedao);
+			System.out.print("DAO de pesonnel est bien sérialisé !\n");
+			out.close();
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("personneDAO.serial"));
+			personnedaoTest = (PersonnelDAO) in.readObject();
+			
+		       System.out.print("DAO de pesonnel est bien désérialisé !\n");
+		    
+		       personnedaoTest.delete(personnedaoTest.find(p1));
+		       
+		       assertFalse("La liste Personneldao ne contient pas p1",personnedaoTest.getAll().contains(p1));
+		      
+		       in.close();
+			}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 }

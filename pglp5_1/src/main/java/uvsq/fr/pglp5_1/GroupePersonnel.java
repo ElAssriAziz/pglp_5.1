@@ -2,14 +2,16 @@ package uvsq.fr.pglp5_1;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class GroupePersonnel implements ComponentPersonnel, Iterable<ComponentPersonnel>{
+
+public class GroupePersonnel implements ComponentPersonnel,Serializable{
 	
+	
+
 	/**
 	 * 
 	 */
-
+	private static final long serialVersionUID = -9104661272545130212L;
 	private final ArrayList<ComponentPersonnel> ListePersonnels;
 	
 	public GroupePersonnel() {
@@ -32,12 +34,5 @@ public class GroupePersonnel implements ComponentPersonnel, Iterable<ComponentPe
 		return 1;
 	}
 
-	public Iterator<ComponentPersonnel> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*public Iterator<ComponentPersonnel> iterator() {
-		 return new ItemIterator(this);
-	}*/
+	
 }

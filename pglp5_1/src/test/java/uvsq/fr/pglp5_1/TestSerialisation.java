@@ -15,7 +15,57 @@ import uvsq.fr.pglp5_1.NumeroTele;
 
 
 public class TestSerialisation {
-
+	
+	@Test
+	public void testSerialisatioGroupePersonnel() {
+		try{
+			Personnel personne1 = new Personnel
+					.Builder("Marc","Michel","Manager")
+					.dateNaissance( LocalDate.of(1970, Month.APRIL, 20))
+					.addNumTelephone(new NumeroTele("Personnel","0605485237"))
+					.addNumTelephone(new NumeroTele("Professionnel","06054414527"))
+					.build();
+			Personnel personne2 = new Personnel
+					.Builder("aaa","bbb","cccc")
+					.dateNaissance( LocalDate.of(1995, Month.MARCH, 16))
+					.addNumTelephone(new NumeroTele("Personnel","0605221237"))
+					.build();
+			Personnel personne3 = new Personnel
+					.Builder("ddd","eee","ffff")
+					.dateNaissance( LocalDate.of(1995, Month.JANUARY, 14))
+					.addNumTelephone(new NumeroTele("Personnel","0605221237"))
+					.build();
+			GroupePersonnel gp1 =new GroupePersonnel();
+			GroupePersonnel gp2 =new GroupePersonnel();
+			GroupePersonnel gp3 =new GroupePersonnel();
+			gp1.addPersonnel(personne1);
+			gp1.addPersonnel(personne2);
+			gp2.addPersonnel(gp1);
+		
+			gp2.addPersonnel(personne3);
+			ObjectOutputStream out = new ObjectOutputStream(
+					
+					new FileOutputStream("Groupe.serial"));
+	out.writeObject(gp2);
+	System.out.print("Groupe 2 est bien sérialisé !\n");
+	out.close();
+	ObjectInputStream in = new ObjectInputStream(new FileInputStream("Groupe.serial"));
+	GroupePersonnel GroupeTest  =new GroupePersonnel();
+	GroupeTest = (GroupePersonnel) in.readObject();
+       System.out.print("Groupe 2 est bien désérialisé !\n");
+    
+       
+      /* assertFalse("Le groupe 2 ne contient pas personne 2",GroupeTest.getListePersonnels().contains(personne2));
+       assertTrue("Le groupe 2 contient groupe 1 et personne3",GroupeTest.getListePersonnels().size()==2);
+   */
+   	gp3.addPersonnel(personne2);
+	gp2.addPersonnel(gp3);
+    assertTrue("Le groupe 2 contient groupe 1 et personne3",GroupeTest.getListePersonnels().size()==2);
+       in.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}}
 	
 	@Test
 	public void testSerialisatioPersonnel() {
